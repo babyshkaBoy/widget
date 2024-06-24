@@ -14,16 +14,15 @@ enum BottleType {
 
 struct BottleView: View {
     @Binding var waterAmount: Int
+    
     @Binding var maxVolume: Int
     var liquidPercentage: CGFloat {
         CGFloat(waterAmount) / CGFloat(maxVolume)
     }
     
     var bottleType: BottleType = .big
-    
     var fillColor: Color = .blue.opacity(0.3)
     var emptyColor: Color = .gray.opacity(0.3)
-    
     
     var bottleHeight: CGFloat {
         switch bottleType {
@@ -42,7 +41,6 @@ struct BottleView: View {
             return 50
         }
     }
-    
     
     var strawHeight: CGFloat {
         switch bottleType {
@@ -64,16 +62,13 @@ struct BottleView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            //straw
             Rectangle().fill(liquidPercentage == 1 ? fillColor : emptyColor ).frame(width: strawWidth, height: strawHeight)
             
-            
             VStack(spacing: 0) {
-                //empty part of bottle
+                //пустая часть
                 Rectangle().fill(emptyColor).frame(width: bottleWidth, height: bottleHeight * (1 - liquidPercentage))
                 
-                
-                //full part of bottle
+                //заполненная часть
                 Rectangle().fill(fillColor).frame(width: bottleWidth, height: bottleHeight * liquidPercentage)
                 
             }
