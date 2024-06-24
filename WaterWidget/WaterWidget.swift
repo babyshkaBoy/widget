@@ -8,9 +8,6 @@
 import WidgetKit
 import SwiftUI
 
-import WidgetKit
-import SwiftUI
-
 //определяет тип данных которые будут отображаться в виджете
 struct WaterEntry: TimelineEntry {
     let date: Date
